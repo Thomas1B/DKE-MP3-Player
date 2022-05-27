@@ -1,0 +1,541 @@
+<!--
+
+Created by https://github.com/goldfire/howler.js/tree/master/examples/player
+
+I have modified things to my likings.
+
+ -->
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="user-scalable=no">
+  <title>&Delta;&Kappa;&Epsilon; Song Player</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icons/dke_icon.ico">
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="jQuery.js"></script>
+  <script type="text/javascript" src="howler.core.js" defer></script>
+  <script type="text/javascript" src="playerV2.js" defer></script>
+
+
+</head>
+<body>
+
+  <!-- Top Info -->
+  <div id="title">
+    <span id="track"></span>
+    <div id="timer">0:00</div>
+    <div id="duration">0:00</div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controlsOuter">
+    <div class="controlsInner">
+      <div id="loading"></div>
+      <div class="btn" id="playBtn"></div>
+      <div class="btn" id="pauseBtn"></div>
+      <div class="btn" id="prevBtn"></div>
+      <div class="btn" id="nextBtn"></div>
+    </div>
+    <div class="btn" id="playlistBtn"></div>
+    <div class="btn" id="volumeBtn"></div>
+  </div>
+
+  <!-- Lyrics -->
+  <div id="lyrics">
+    <!-- Lyrics: Son of a DKE -->
+    <div class="song" id="song1">
+      <p>
+        When I was a freshman,<br>
+        A freshman, soft, and green,<br>
+        I dreamt of Delta Kappa,<br>
+        Of college life the queen,<br>
+        And when upon the woolly goat<br>
+        They mounted me,<br>
+        I felt with joy I'd reached at last<br>
+        The hall of D K E.
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i><br>
+        I'm the son of a, son of a,<br>
+        Son of a, son of a, son of a D K E!<br>
+        I'm the song of a, son of a,<br>
+        Son of a, son of a, son of a D K E!<br>
+        Like every college fellow,<br>
+        I like my whiskey free,<br>
+        For I'm a rambling rake of a college man,<br>
+        And a son of a D K E!
+      </p>
+      <p>
+        When I was a sophomore,<br>
+        So festive, gay, and free,<br>
+        I wore with pride the diamond pin<br>
+        Of our jolly fraternity.<br>
+        I thought I owned the campus,<br>
+        My style was great to see,<br>
+        And I paralyzed the freshman<br>
+        With my yarns of D K E.
+      </p>
+      <p class="chorusWord">-- Chorus</p>
+      <p>
+        A sentimental junior,<br>
+        I sported a moustache,<br>
+        Among the innocent maidens<br>
+        I cut an awful dash!<br>
+        I broke a leg on the football field<br>
+        And I only said, “Oh! Gee!”<br>
+        For I never swear, I’m a moral man<br>
+        And the son of a D K E.<br>
+      </p>
+      <p class="chorusWord">-- Chorus</p>
+      <p>
+        A grave and reverend senior,<br>
+        I soothed my fevered brain,<br>
+        By dreaming of commencement day,<br>
+        Pipes, ladies, and champagne!<br>
+        And when in happy years to come<br>
+        I sport my children three,<br>
+        I’ll mark them each with a stencil plate<br>
+        One D! One K! One E!
+      </p>
+      <p class="chorusWord">-- Chorus</p>
+    </div>
+
+    <!-- Lyrics: Friends from the Heart -->
+    <div class="song" id="song2">
+      <p>
+        Dear old D K E,<br>
+        Friends we’ll always be.<br>
+        Let the wine flow free,<br>
+        Drink to D K E.
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i><br>
+        Let our song ring true,<br>
+        Here’s to me and you:<br>
+        Tho’ we be oceans apart,<br>
+        We will be friends<br>
+        From the heart.<br>
+      </p>
+      <p>
+        Dear old D K E,<br>
+        Friends we’ll always be.<br>
+        Let the wine flow free,<br>
+        Drink to D K E.
+      </p>
+      <p><i class="chorusWord">-- Chorus</i></p>
+      <p>
+        <b>Solo:</b><br>
+        Dear old D K E,<br>
+        Friends we’ll always be.<br>
+        Let the wine flow free,<br>
+        Drink to D K E.<br>
+      </p>
+      <p><i class="chorusWord">-- Chorus</i></p>
+
+    </div>
+
+    <!-- Lyrics: Deke Lion March -->
+    <div class="song" id="song3">
+      <p>
+        We’re a loyal band of brothers,<br>
+        Loyal all to D K E,<br>
+        Greater than all the others<br>
+        In her fellowship is she,<br>
+        And from Maine to Califor-nia<br>
+        Dekes are very hard to beat,<br>
+        Like the mighty roaring rampant lion<br>
+        Him we greet.<br>
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i><br>
+        There he stands, the rampant lion,<br>
+        Symbol of might is he,<br>
+        There he stands, upright and fearless,<br>
+        He stands for D K E.<br>
+        Look out Alpha Delt Psi U,<br>
+        Zeta Psi and Sigma Phi.<br>
+        Beware the lion, hear him roaring,<br>
+        <b>--Yell:</b> Roar, Roar, Roar<br>
+      </p>
+      <p>
+        <b>--Yell:</b> Roar, Roar, Hear the lion Roar<br>
+        <b>--Yell:</b> Roar, Roar, Hear the lion Roar<br>
+      </p>
+      <p><i class="chorusWord">-- Chorus</i></p>
+
+    </div>
+
+    <!-- Lyrics: Any Kind Of Man -->
+    <div class="song" id="song4">
+      <p>
+        Any kind a man makes Alpha Delta Phi,<br >
+        Any kind a man makes Psi U - Psi U,<br>
+        Any kind a man makes Zeta Psi <br>
+        But those we don't give a thought to - thought to,<br>
+        Some kind a men make none at all<br>
+        That's not kind for me;<br>
+        Takes a slick man, a damn fine man,<br>
+        to make jolly old DKE.<br>
+        Hmmm<br><br>
+        - Repeat
+      </p>
+    </div>
+
+    <!-- Lyrics: We hail the holy Goddess -->
+    <div class="song" id="song5">
+      <p>
+        We hail thee holy Goddess,<br>
+        Guardian of our student days;<br>
+        The story of thy praise shall<br>
+        Mingle with our happiest lays.<br>
+        Though in sorrow low cast down,<br>
+        Find we still a friend in thee,<br>
+        And in joy thou’rt ever true,<br>
+        Our beloved D K E.<br>
+      </p>
+      <p>
+        “In fair and stormy weather.<br>
+        Brothers ever friends at heart,”<br>
+        Though bound by bonds o love must<br>
+        From thine altar sadly part.<br>
+        Sundered far in distant lands,<br>
+        Mem’ry bears them vision sweet,<br>
+        And in fancy of they meet<br>
+        With the loved in D K E.<br>
+      </p>
+      <p>
+        Sing softly once again<br>
+        Of the loved ones gone before,<br>
+        Whom of we used to meet<br>
+        In the happy days of yore.<br>
+        E’en while now we’re gathered here,<br>
+        In the twilight soft and sweet,<br>
+        Seem their spirits hovering near<br>
+        O’er thine altar, D K E.<br>
+      </p>
+
+    </div>
+
+    <!-- Lyrics: Phi Marching Song -->
+    <div class="song" id="song6">
+      <p>
+        A band of brothers in DKE<br>
+        We march along tonight,<br>
+        Two by two with arms locked<br>
+        Firm and tight;<br>
+        Our leader signals with hat in hand<br>
+        As we go marching on,<br>
+        Singing Delta Kappa Epsilon.<br>
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i>
+        So merrily sing we all to D K E,<br>
+        The mother of jollity,<br>
+        Whose children are gay and free.<br>
+        We’ll sing to Phi<br>
+        And then we’ll sing to<br>
+        Dear old Delta Kappa Epsilon.<br>
+      </p>
+      <p>
+        The stars are out, the moon is shining<br>
+        On our jolly crowd,<br>
+        As arm in arm<br>
+        We march and sing aloud,<br>
+        We’ll sing in honor of the tie that<br>
+        Binds our hearts in one,<br>
+        Dear old Delta Kappa Epsilon.<br>
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+      <p>
+        The campus windows are lifted high<br>
+        As we go marching by,<br>
+        Our torches flash in ev’ry lady’s eye.<br>
+        Our trembling victims await our call<br>
+        As we go marching on,<br>
+        Singing Delta Kappa Epsilon.<br>
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+    </div>
+
+    <!-- Lyrics: Marching Song -->
+    <div class="song" id="song7">
+      <p>
+        Of all the starry hosts above<br>
+        We consecrate to thee,<br>
+        The one most radiant in light,<br>
+        Beloved D K E.
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i><br>
+        For we always seem so jolly oh!<br>
+        So jolly oh! So jolly oh!<br>
+        For we always seem so jolly oh!<br>
+        In jolly D K E.<br>
+        We dance (we dance), we sing (we sing),<br>
+        In jolly D K E.<br>
+        Fla la la, Fla la la, Fla la la, Fla la la,<br>
+        Fla la la, Fla la la, Fla la la, la la la la la<br>
+        la la la.<br>
+        Slap bang, here we are again,<br>
+        Here we are again, Here we are again.<br>
+        Slap bang, here we are again<br>
+        Hurrah for DKE.<br>
+      </p>
+      <p>
+        And kindly smiling from on high<br>
+        Our parting it shall see,<br>
+        And hear us where we bid “Goodnight”,<br>
+        Hurrah for DKE<br>
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+      <p>
+        And when in future years you trot<br>
+        Your boy upon your knee.<br>
+        Just teach him that the alphabet<br>
+        Begins with D K E.<br>
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+    </div>
+
+    <!-- Lyrics: Oh The Red Hot Spot -->
+    <div class="song" id="song8">
+      <p>
+        Oh, the red hot spot to cast your lot is<br>
+        with old D K E;<br>
+        She puts up joy without allow at a very<br>
+        moderate fee;<br>
+        There’s nothing loud about her crowd,<br>
+        they’re screamers all the sa-a-ame;<br>
+        They cut the sod, and carry the hod, and<br>
+        build the house of fame.<br>
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i><br>
+        Then stir the startled air,<br>
+        Till laughter quivers there.<br>
+        For we’re the boys who deal in joys<br>
+        We’re monarchs of the li-i-ine.<br>
+        Tomorrow has no woe, so bid all<br>
+        trouble go,<br>
+        Content to be in D K E,<br>
+        Drink deep of youth’s mad wine.<br>
+      </p>
+      <p>
+        Astride the goat we failed to note much<br>
+        fun in D K E;<br>
+        His bristles rough seemed awful tough,<br>
+        his butt was misery!<br>
+        But oh how tame that goat became, when<br>
+        in his box stall ti-i-ied,<br>
+        We rather guess we’ll always bless that<br>
+        mad and mystic ride<br>
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+      <p>
+        A man in truth gains endless youth in<br>
+        jolly D K E;<br>
+        Though hairs grow white no cruel blight<br>
+        upon the heart can be;<br>
+        One mother’s call holds brothers all, in<br>
+        union of the so-o-oul,<br>
+        A peerless band we’ll ever stand, on Delta<br>
+        Kappa’s scroll.<br>
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+    </div>
+
+    <!-- Lyrics: O Drink to DKE -->
+    <div class="song" id="song9">
+      <p>
+        There is a name a magic name,<br>
+        That makes our young hearts glow,<br>
+        And drives the shadows from our lives,<br>
+        As sunlight melts the snow;<br>
+        And if perchance you hear this name,<br>
+        Wherever you may be,<br>
+        Then drink a cup, of ruby wine,<br>
+        To the health of D K E.<br>
+      </p>
+      <p>
+        O the health of D K E,<br>
+        Our dear old D K E,<br>
+        Then drain a cup of ruby wine<br>
+        To the health of D K E.<br>
+        Bright stars may shine upon our path,<br>
+        Their radiance most benign,<br>
+        None more resplendent than thy brow,<br>
+        No power to guide like thine.<br>
+        Forgotten are our sorrows here,<br>
+        And cares, corrodent, flee,<br>
+        When circled in thy strong embrace,<br>
+        O beauteous D K E.<br>
+      </p>
+      <p>
+        Then drink to D K E<br>
+        Our beauteous D K E.<br>
+        Then drain a cup of ruby wine<br>
+        To the health of D K E.<br>
+        And when we’ve left her pleasured halls<br>
+        And meet the world’s harsh frown,<br>
+        O then remember D K E<br>
+        And drink a bumper down;<br>
+        Now crown with love her kindly brow,<br>
+        And long her praises sing,<br>
+        Bright shine the star of D K E,<br>
+        Forth her broad ensign fling.<br>
+      </p>
+      <p>
+        Then drink to D K E<br>
+        Victorious D K E.<br>
+        Then drain a cup of ruby wine,<br>
+        To the health of D K E.<br>
+      </p>
+    </div>
+
+    <!-- Lyrics: Vive la DKE -->
+    <div class="song" id="song10">
+      <p>
+        Let every good fellow of every degree<br>
+        Vive la DKE!<br>
+        Now drink to the health of DKE<br>
+        Vive la DKE!<br>
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i><br>
+        Vive la, vive la, vive l’amour,<br>
+        Vive la, vive la, vive l’amour,<br>
+        Vive l’amour, vive l’amour,<br>
+        Vive la DKE.
+      </p>
+      <p>
+        The present and past are full of her fame,<br>
+        Vive la DKE.<br>
+        The future shall only emblazon her name.<br>
+        Vive la DKE!
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+      <p>
+        Like the snow of the mountains, all staintless and pure,<br>
+        Vive la DKE!<br>
+        Her name and her glory will never endure<br>
+        Vive la DKE!
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+      <p>
+        Then fill up a bumper for DKE,<br>
+        Vive la DKE!<br>
+        And drink to her health with three times three,<br>
+        Vive la DKE!
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+      <p>
+        Vive la D-K-E!
+      </p>
+
+    </div>
+
+    <!-- Lyrics: Delta Kappa Epsilon -->
+    <div class="song" id="song11">
+      <p>
+        O Del-ta Kappa Ep-silon!<br>
+        To thee our hearts o’erflow,<br>
+        As held by thy dear sacred bonds<br>
+        Our friendships warmer grow;<br>
+        With songs and mirth the joyous<br>
+        hours we spend,<br>
+        Within thy sheltering home;<br>
+        No fears nor anxious cares offend,<br>
+        In Delta Kappa Ep-si-lon.
+      </p>
+      <p>
+        When from our college port we sail,<br>
+        With hearts made strong and free,<br>
+        And bid farewell to dear old Yale,<br>
+        And our loved D K E;<br>
+        Though storms may beat about our<br>
+        future course,<br>
+        And waves of trouble come,<br>
+        We’ll cling to thee our sure resource,<br>
+        O Delta Kappa Ep-si-lon.<br>
+      </p>
+
+    </div>
+
+    <!-- Lyrics: The Darling Maid -->
+    <div class="song" id="song12">
+      <p>
+        In Yankee land there is a maid<br>
+        Well known to college fame.<br>
+        She’s pretty, plump and comely,<br>
+        And bears an occult name,<br>
+        While at her feet do worship<br>
+        The students gay and free,<br>
+        For they in truth and constancy<br>
+        Love pretty D K E.
+      </p>
+      <p class="chorus">
+        <i class="chorusWord">Chorus:</i><br>
+        Me oi! Me oi!<br>
+        She is our love and joy;<br>
+        To her we pledge our truest oaths<br>
+        Kerothen Aei Philoi<br>
+      </p>
+      <p>
+        The noblest men of our century,<br>
+        Her prosperity love to see,<br>
+        For they themselves have worshipped<br>
+        At the shrine of D-K-E<br>
+        And when they go into the world<br>
+        To battle and to strife,<br>
+        They always hold their D-K-E<br>
+        The idol of their life.
+      </p>
+      <p>
+        <i class="chorusWord">-- Chorus</i>
+      </p>
+    </div>
+</div>
+
+  <!-- Progress -->
+  <div id="progress"></div>
+
+  <!-- Playlist -->
+  <div id="playlist">
+    <ol id="list"></ol>
+  </div>
+
+  <!-- Volume -->
+  <div id="volume" class="fadeout">
+    <div id="barFull" class="bar"></div>
+    <div id="barEmpty" class="bar"></div>
+    <div id="sliderBtn"></div>
+  </div>
+
+
+</body>
+</html>
